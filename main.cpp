@@ -18,22 +18,21 @@
 #include "tt.h"
 
 namespace Gemchess {
-    const std::string NAME = "Gemchess 2.0 (SMP)"; 
-    const std::string AUTHOR = "Gemini User";
+    // --- RELEASE CONFIGURATION ---
+    const std::string NAME = "Gemchess v1.0"; 
+    const std::string AUTHOR = "Google Gemini Pro & Cole Tarrant";
 
     class Engine {
     public:
         Engine() { 
             pos.set(START_FEN); 
-            TT.resize(16); 
+            TT.resize(16); // Default Hash Size
         }
 
-        // Thread count stored here
         int threadCount = 1; 
 
         void go(std::string params) {
             SearchLimits limits;
-            // Apply current engine settings to search
             limits.threads = threadCount;
 
             std::istringstream ss(params);
